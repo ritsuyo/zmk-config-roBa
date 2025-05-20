@@ -74,7 +74,7 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 LANGUAGE_2  &lt 2 LANGUAGE_1  &lt 1 SPACE           &lt 1 BACKSPACE   &lt 3 ENTER                       &kp DEL
             >;
 
-            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
+            sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
         };
 
         ARROW {
@@ -85,7 +85,7 @@
 &trans           &trans       &trans    &trans      &trans       &trans      &trans  &trans                                                  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(K_SCROLL_DOWN) LC(K_SCROLL_UP)>;
+            sensor-bindings = <&inc_dec_kp LC(DOWN_ARROW) LC(UP_ARROW)>;
         };
 
         NUM {
