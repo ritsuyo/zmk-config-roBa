@@ -41,26 +41,6 @@
             bindings = <&kp EQUAL>;
             key-positions = <24 25>;
         };
-
-        colon {
-            bindings = <&kp SEMICOLON>;
-            key-positions = <22 26>;
-        };
-
-        chu_kakko {
-            bindings = <&kp LS(AT_SIGN)>;
-            key-positions = <22 27>;
-        };
-
-        underbar {
-            bindings = <&kp LS(MINUS)>;
-            key-positions = <22 14>;
-        };
-
-        double_quote {
-            bindings = <&kp COLON>;
-            key-positions = <22 16>;
-        };
     };
 
     macros {
@@ -88,6 +68,42 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        hyphn: hyphn {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HYPHN";
+            bindings = <&kp MINUS>, <&kp LS(BACKSLASH)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        semi_colon: semi_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SEMI_COLON";
+            bindings = <&kp SEMICOLON>, <&kp SQT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        blacket: blacket {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BLACKET";
+            bindings = <&kp RIGHT_BRACKET>, <&kp RIGHT_BRACE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        single_quote: single_quote {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SINGLE_QUOTE";
+            bindings = <&kp AMPERSAND>, <&kp AT_SIGN>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -96,8 +112,8 @@
         default_layer {
             bindings = <
 &kp Q             &kp L         &kp U         &kp COMMA         &kp PERIOD                                            &kp F        &kp W  &kp R  &kp Y  &kp P
-&kp E             &kp I         &kp A         &kp O             &kp MINUS         &kp LS(LG(S))      &kp AMPERSAND    &kp K        &kp T  &kp N  &kp S  &kp H
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp SEMICOLON     &kp AT_SIGN        &kp SLASH        &kp G        &kp D  &kp M  &kp J  &kp B
+&kp E             &kp I         &kp A         &kp O             &hyphn            &kp LS(LG(S))      &single_quote    &kp K        &kp T  &kp N  &kp S  &kp H
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &semi_colon       &blacket           &kp SLASH        &kp G        &kp D  &kp M  &kp J  &kp B
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 LANGUAGE_2  &lt 2 LANGUAGE_1  &lt 1 SPACE        &lt 1 BACKSPACE  &lt 3 ENTER                       &kp DEL
             >;
 
