@@ -72,7 +72,7 @@
         hyphn: hyphn {
             compatible = "zmk,behavior-mod-morph";
             label = "HYPHN";
-            bindings = <&kp MINUS>, <&kp LS(BACKSLASH)>;
+            bindings = <&kp MINUS>, <&kp LS(NON_US_BACKSLASH)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
