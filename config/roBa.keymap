@@ -41,6 +41,26 @@
             bindings = <&kp EQUAL>;
             key-positions = <24 25>;
         };
+
+        colon {
+            bindings = <&kp SEMICOLON>;
+            key-positions = <22 26>;
+        };
+
+        chu_kakko {
+            bindings = <&kp LS(AT_SIGN)>;
+            key-positions = <22 27>;
+        };
+
+        underbar {
+            bindings = <&kp LS(MINUS)>;
+            key-positions = <22 14>;
+        };
+
+        double_quote {
+            bindings = <&kp COLON>;
+            key-positions = <22 16>;
+        };
     };
 
     macros {
@@ -49,6 +69,13 @@
             #binding-cells = <1>;
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
+        };
+
+        usjis_colon: usjis_colon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>;
+            label = "USJIS_COLON";
         };
     };
 
@@ -68,10 +95,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp L         &kp U         &kp COMMA         &kp PERIOD                                                &kp F        &kp W  &kp R  &kp Y  &kp D
-&kp E             &kp I         &kp A         &kp O             &kp MINUS         &kp LS(LG(S))         &kp SINGLE_QUOTE  &kp K        &kp T  &kp N  &kp S  &kp H
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp SEMICOLON     &kp LEFT_BRACKET      &kp SLASH         &kp G        &kp D  &kp M  &kp J  &kp B
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 LANGUAGE_2  &lt 2 LANGUAGE_1  &lt 1 SPACE           &lt 1 BACKSPACE   &lt 3 ENTER                       &kp DEL
+&kp Q             &kp L         &kp U         &kp COMMA         &kp PERIOD                                            &kp F        &kp W  &kp R  &kp Y  &kp P
+&kp E             &kp I         &kp A         &kp O             &kp MINUS         &kp LS(LG(S))      &kp AMPERSAND    &kp K        &kp T  &kp N  &kp S  &kp H
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp SEMICOLON     &kp AT_SIGN        &kp SLASH        &kp G        &kp D  &kp M  &kp J  &kp B
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 LANGUAGE_2  &lt 2 LANGUAGE_1  &lt 1 SPACE        &lt 1 BACKSPACE  &lt 3 ENTER                       &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
@@ -79,10 +106,10 @@
 
         ARROW {
             bindings = <
-&kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                      &kp CARET  &kp AMPERSAND  &kp UP_ARROW    &kp ASTERISK  &kp LEFT_PARENTHESIS
-&kp ESCAPE       &trans       &trans    &trans      &trans       &trans      &trans  &trans     &kp LEFT       &kp DOWN_ARROW  &kp RIGHT     &trans
-&trans           &trans       &trans    &trans      &trans       &trans      &trans  &mkp MB4   &mkp LCLK      &mkp MCLK       &mkp RCLK     &mkp MB5
-&trans           &trans       &trans    &trans      &trans       &trans      &trans  &trans                                                  &trans
+&kp EXCLAMATION  &kp LEFT_BRACKET  &kp HASH  &kp DOLLAR  &kp PERCENT                      &kp EQUAL  &kp CARET  &kp UP_ARROW    &kp DOUBLE_QUOTES  &kp ASTERISK
+&kp ESCAPE       &trans            &trans    &trans      &trans       &trans      &trans  &trans     &kp LEFT   &kp DOWN_ARROW  &kp RIGHT          &trans
+&trans           &trans            &trans    &trans      &trans       &trans      &trans  &mkp MB4   &mkp LCLK  &mkp MCLK       &mkp RCLK          &mkp MB5
+&trans           &trans            &trans    &trans      &trans       &trans      &trans  &trans                                                   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LC(DOWN_ARROW) LC(UP_ARROW)>;
@@ -90,10 +117,10 @@
 
         NUM {
             bindings = <
-&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5                      &kp NUMBER_6  &kp N7        &kp N8        &kp N9        &kp N0
-&trans        &trans        &trans        &trans        &trans  &trans      &trans  &kp ASTERISK  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp MINUS
-&trans        &trans        &trans        &trans        &trans  &trans      &trans  &kp SLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS
-&trans        &trans        &trans        &trans        &trans  &trans      &trans  &kp N0                                                  &kp EQUAL
+&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5                      &kp NUMBER_6       &kp N7        &kp N8        &kp N9        &kp N0
+&trans        &trans        &trans        &trans        &trans  &trans      &trans  &kp DOUBLE_QUOTES  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp MINUS
+&trans        &trans        &trans        &trans        &trans  &trans      &trans  &kp SLASH          &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp COLON
+&trans        &trans        &trans        &trans        &trans  &trans      &trans  &kp N0                                                       &kp UNDERSCORE
             >;
         };
 
