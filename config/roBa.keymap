@@ -27,19 +27,9 @@
             key-positions = <12 13>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
+        tab2 {
+            bindings = <&kp TAB>;
             key-positions = <11 10>;
-        };
-
-        double_quotation {
-            bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <20 21>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
         };
     };
 
@@ -54,8 +44,85 @@
         usjis_colon: usjis_colon {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none>;
+            bindings = <&kp COLON>;
             label = "USJIS_COLON";
+        };
+
+        usjis_hyphn: usjis_hyphn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp UNDER>;
+            label = "USJIS_HYPHN";
+        };
+
+        usjis_semicolon: usjis_semicolon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI>;
+            label = "USJIS_SEMICOLON";
+        };
+
+        kakko: kakko {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT_ARROW>;
+            label = "KAKKO";
+        };
+
+        usjis_atmark: usjis_atmark {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp AT>;
+            label = "USJIS_ATMARK";
+        };
+
+        usjis_ruijo: usjis_ruijo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CARET>;
+            label = "USJIS_RUIJO";
+        };
+
+        usjis_and: usjis_and {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp AMPS>;
+            label = "USJIS_AND";
+        };
+
+        usjis_kome: usjis_kome {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp STAR>;
+            label = "USJIS_KOME";
+        };
+
+        usjis_plus: usjis_plus {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PLUS>;
+            label = "USJIS_PLUS";
+        };
+
+        usjis_equal: usjis_equal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>;
+            label = "USJIS_EQUAL";
+        };
+
+        usjis_kagikakko: usjis_kagikakko {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT_ARROW>;
+            label = "USJIS_KAGIKAKKO";
+        };
+
+        usjis_nyorokakko: usjis_nyorokakko {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT_ARROW>;
+            label = "USJIS_NYOROKAKKO";
         };
     };
 
@@ -69,19 +136,10 @@
             tapping-term-ms = <200>;
         };
 
-        hyphn: hyphn {
-            compatible = "zmk,behavior-mod-morph";
-            label = "HYPHN";
-            bindings = <&kp MINUS>, <&kp LS(NON_US_BACKSLASH)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         semi_colon: semi_colon {
             compatible = "zmk,behavior-mod-morph";
             label = "SEMI_COLON";
-            bindings = <&kp SEMICOLON>, <&kp SQT>;
+            bindings = <&usjis_semicolon>, <&usjis_colon>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -90,7 +148,7 @@
         blacket: blacket {
             compatible = "zmk,behavior-mod-morph";
             label = "BLACKET";
-            bindings = <&kp RIGHT_BRACKET>, <&kp RIGHT_BRACE>;
+            bindings = <&usjis_kagikakko>, <&usjis_nyorokakko>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -104,6 +162,22 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        hyphon_underbar: hyphon_underbar {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HYPHON_UNDERBAR";
+            bindings = <&kp MINUS>, <&usjis_hyphn>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mscrl: mscrl {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            label = "MSCRL";
+            #sensor-binding-cells = <2>;
+            bindings = <&none>, <&none>;
+        };
     };
 
     keymap {
@@ -112,23 +186,23 @@
         default_layer {
             bindings = <
 &kp Q             &kp L         &kp U         &kp COMMA         &kp PERIOD                                            &kp F        &kp W  &kp R  &kp Y  &kp P
-&kp E             &kp I         &kp A         &kp O             &hyphn            &kp LS(LG(S))      &single_quote    &kp K        &kp T  &kp N  &kp S  &kp H
+&kp E             &kp I         &kp A         &kp O             &hyphon_underbar  &kp LS(LG(S))      &single_quote    &kp K        &kp T  &kp N  &kp S  &kp H
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &semi_colon       &blacket           &kp SLASH        &kp G        &kp D  &kp M  &kp J  &kp B
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 LANGUAGE_2  &lt 2 LANGUAGE_1  &lt 1 SPACE        &lt 1 BACKSPACE  &lt 3 ENTER                       &kp DEL
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 LANGUAGE_2  &lt 2 LANGUAGE_1  &lt 1 SPACE        &lt 1 BACKSPACE  &lt 4 ENTER                       &kp DEL
             >;
 
-            sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
+            sensor-bindings = <&mscrl SCRL_UP SCRL_DOWN>;
         };
 
         ARROW {
             bindings = <
-&kp EXCLAMATION  &kp LEFT_BRACKET  &kp HASH  &kp DOLLAR  &kp PERCENT                      &kp EQUAL  &kp CARET  &kp UP_ARROW    &kp DOUBLE_QUOTES  &kp ASTERISK
-&kp ESCAPE       &trans            &trans    &trans      &trans       &trans      &trans  &trans     &kp LEFT   &kp DOWN_ARROW  &kp RIGHT          &trans
-&trans           &trans            &trans    &trans      &trans       &trans      &trans  &mkp MB4   &mkp LCLK  &mkp MCLK       &mkp RCLK          &mkp MB5
-&trans           &trans            &trans    &trans      &trans       &trans      &trans  &trans                                                   &trans
+&kp EXCLAMATION  &usjis_atmark  &kp HASH  &kp DOLLAR  &kp PERCENT                      &usjis_ruijo  &usjis_and  &usjis_kome     &usjis_plus      &kakko
+&kp ESCAPE       &trans         &trans    &trans      &trans       &trans      &trans  &trans        &trans      &kp UP_ARROW    &trans           &trans
+&trans           &trans         &trans    &trans      &trans       &trans      &trans  &trans        &kp LEFT    &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans
+&trans           &trans         &trans    &trans      &trans       &trans      &trans  &trans                                                     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(DOWN_ARROW) LC(UP_ARROW)>;
+            sensor-bindings = <&mscrl SCRL_UP SCRL_DOWN>;
         };
 
         NUM {
@@ -153,10 +227,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans     &none      &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &none   &none      &none      &none      &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &none   &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                   &trans
             >;
         };
 
